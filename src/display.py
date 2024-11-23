@@ -10,4 +10,8 @@ class Display:
     def __str__(self):
         ...  # Return string containing sensor's id and status
 
+    def update(self, data):
+        for key, value in data.items():
+            print(f"{key}: {value}")
+
 
