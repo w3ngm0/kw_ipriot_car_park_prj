@@ -12,4 +12,3 @@ class CarPark:
     def __str__(self):
         ...  # Return a string containing the car park's location and capacity
 
-    
