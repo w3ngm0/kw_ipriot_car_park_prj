@@ -20,4 +20,14 @@ To get started with the project, you can follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/w3ngm0/ipriot_car_park_prj.git
-   
+
+
+### Images and Additional Evidencing
+![Initial commit](images/gh_image.png)
+
+
+| Class Name   | Attributes                             | Methods                              |
+|--------------|----------------------------------------|--------------------------------------|
+| `CarPark`    | capacity, available_bays, plates_id    | add_car, remove_car , is_full        |
+| `Sensor`     | sensor_id, sensor_position(entry/exit) | detect_car, reset_sensor             |
+| `Display`    | message , location (entry or exit)     | show_display, update_display_message |
