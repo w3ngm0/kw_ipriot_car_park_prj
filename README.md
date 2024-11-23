@@ -31,3 +31,19 @@ To get started with the project, you can follow these steps:
 | `CarPark`    | capacity, available_bays, plates_id    | add_car, remove_car , is_full        |
 | `Sensor`     | sensor_id, sensor_position(entry/exit) | detect_car, reset_sensor             |
 | `Display`    | message , location (entry or exit)     | show_display, update_display_message |
+
+### Updated src file with classes
+![Added stubs for classes](images/stubs-for-classes.png)
+
+>Q. Which class is responsible for the number of available bays (and why)?
+> The CarPark class because we need to know how many bays are present every time a car 
+> enters or exits the car park.
+> 
+>Q. Which class is responsible for the current temperature (and why)?
+> The Display class will display the current temperature 
+> depending  on the  method the handled by either the sensor or car_park class.
+> 
+>Q. Which class is responsible for the time (and why)?
+> Similarly the display class will again be responsible for displaying the time 
+> depending on the class that will handle the methods it should then update the display to user.
+--------
