@@ -1,3 +1,4 @@
+import json
 import unittest
 from car_park import CarPark
 from sensor import EntrySensor, ExitSensor
@@ -136,6 +137,24 @@ class TestCarPark(unittest.TestCase):
         self.assertIn("NEW-001", last_line)  # check plate entered
         self.assertIn("exited", last_line)  # Check if the action is logged
         self.assertIn("\n", last_line) # check entry has a new line
+
+    def test_car_park_initialized_with_config_file(self):
+        """Test CarPark initialization from a config file."""
+        # Create a sample config file
+        config_file = Path("test_config.json")
+        with config_file.open("w") as f:
+            f.write('{"location": "Test Location", "capacity": 50, "log_file": "test_log.txt"}')
+
+        # Initialize CarPark
+        car_park = CarPark(config_file=config_file)
+
+        # Assertions
+        self.assertEqual(car_park.location, "Test Location")
+        self.assertEqual(car_park.capacity, 50)
+        self.assertEqual(car_park.log_file, Path("test_log.txt"))
+
+        # Clean up
+        config_file.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
