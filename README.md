@@ -85,3 +85,6 @@ Answer the following questions:
      > like humidity I can do so without altering existing code and pass the data easily. 
       `
 ### Unit Tests Evidencing
+
+![Unit tests](images/unit-tests.png)
+
