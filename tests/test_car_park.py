@@ -10,6 +10,12 @@ class TestCarPark(unittest.TestCase):
      """
 
     def setUp(self):
+        # Defining log file path explicitly
+        self.log_file_path = Path("log.txt")
+        if self.log_file_path.exists():
+            self.log_file_path.unlink()  # clean the file before running test
+
+        # Initializing car park
         self.car_park = CarPark("123 Example Street", 100)
 
         # Create Sensor instances
@@ -18,7 +24,7 @@ class TestCarPark(unittest.TestCase):
 
     def tearDown(self):
         # Tear down method to clean file after each test
-        Path("new_log.txt").unlink(missing_ok=True)
+        self.log_file_path.unlink(missing_ok=True)
 
     def test_car_park_initialized_with_all_attributes(self):
         """ Test car_park Attribute initialization """
@@ -29,7 +35,7 @@ class TestCarPark(unittest.TestCase):
         self.assertEqual(self.car_park.sensors, [])
         self.assertEqual(self.car_park.displays, [])
         self.assertEqual(self.car_park.available_bays, 100)
-        self.assertEqual(self.car_park.log_file, Path("log.txt"))
+        self.assertEqual(self.car_park.log_file, self.log_file_path)
 
     def test_add_car(self):
         """ Test add_car method"""
@@ -101,31 +107,35 @@ class TestCarPark(unittest.TestCase):
     # Unit test for log.txt
 
     def test_log_file_created(self):
-        new_carpark = CarPark("123 Example Street", 100, log_file="new_log.txt")
-        self.assertTrue(Path("new_log.txt").exists())
+        """Test if log file is created"""
+        new_log_file = Path("log.txt")
+        new_carpark = CarPark("123 Example Street", 100, log_file=self.log_file_path)
+        self.assertTrue(new_log_file.exists())
 
     # inside the TestCarPark class
     # inside the TestCarPark class
     def test_car_logged_when_entering(self):
-        new_carpark = CarPark("123 Example Street", 100,
-                              log_file="new_log.txt")  # TODO: change this to use a class attribute or new instance variable
+        """Test that a car is logged when it enters"""
         self.car_park.add_car("NEW-001")
         with self.car_park.log_file.open() as f:
-            last_line = f.readlines()[-1]
+            lines = f.readlines()
+        # Ensure log file is not empty
+        self.assertTrue(lines, "Log file is empty after adding to car.")
+        last_line = lines[-1]
         self.assertIn("NEW-001", last_line)  # check plate entered
         self.assertIn("entered", last_line)  # check description
         self.assertIn("\n", last_line)  # check entry has a new line
 
     def test_car_logged_when_exiting(self):
-        new_carpark = CarPark("123 Example Street", 100,
-                              log_file="new_log.txt")  # TODO: change this to use a class attribute or new instance variable
+        """Test that a car is logged when it exits"""
         self.car_park.add_car("NEW-001")
         self.car_park.remove_car("NEW-001")
         with self.car_park.log_file.open() as f:
-            last_line = f.readlines()[-1]
-        self.assertIn(last_line, "NEW-001")  # check plate entered
-        self.assertIn(last_line, "exited")  # check description
-        self.assertIn(last_line, "\n")  # check entry has a new line
+            lines = f.readlines()
+        last_line = lines[-1]
+        self.assertIn("NEW-001", last_line)  # check plate entered
+        self.assertIn("exited", last_line)  # Check if the action is logged
+        self.assertIn("\n", last_line) # check entry has a new line
 
 
 if __name__ == "__main__":
