@@ -1,16 +1,26 @@
 from sensor import Sensor
 from display import Display
 from _datetime import datetime
+from pathlib import Path
+
+
 class CarPark:
     """CarPark class"""
 
     def __init__(self, location="Unknown", capacity=0, plates=None, sensors=None,
-                 displays=None):
+                 displays=None, log_file=None):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
         self.sensors = sensors or []
         self.displays = displays or []
+        self.log_file = log_file or Path("log.txt")
+
+        # Assign log_file using if else using Path
+        # if log_file:
+        #     self.log_file = Path(log_file)
+        # else:
+        #     self.log_file = Path("log.txt")
 
     def __str__(self):
         ...  # Return a string containing the car park's location and capacity
