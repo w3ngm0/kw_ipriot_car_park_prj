@@ -32,15 +32,21 @@ class Sensor(ABC):
 class EntrySensor(Sensor):
     """ A sensor for detecting vehicles existing in the car park"""
     def update_car_park(self, plate):
-        self.car_park.add_car(plate)
-        print(f"Incoming 🚘 vehicle detected. Plate: {plate}")
+        if self.is_active:
+            print(f"Incoming 🚘 vehicle detected. Plate: {plate}")
+            self.car_park.add_car(plate)
+        else:
+            print("Entry sensor is inactive.")
 
 
 class ExitSensor(Sensor):
     """ Remove a vehicle from the car park """
     def update_car_park(self, plate):
-        self.car_park.remove_car(plate)
-        print(f"Outgoing 🚗 vehicle detected. Plate: {plate}")
+        if self.is_active:
+            print(f"Outgoing 🚗 vehicle detected. Plate: {plate}")
+            self.car_park.remove_car(plate)
+        else:
+            print("Exit sensor is inactive.")
 
     def _scan_plate(self):
         return random.choice(self.car_park.plates)

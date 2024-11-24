@@ -116,6 +116,14 @@ Answer the following questions:
 > unit tests not the Sensor unit test. This will help us ensure that the functionality of 
 > CarPark class is working as expected.
 
+### Storing configuration of a car park in a file called config.json
 
+![Added methods to the car park class](images/methods-to-car-park.png)
+
+
+# Running the car park
+> In my src/main.py running main.py gives me: 
+> 
+![Main.py output](images/main-py.png)
 
 
