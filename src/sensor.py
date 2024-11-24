@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import random
 
 
-class Sensor:
+class Sensor(ABC):
     """
     Constructor method for Sensor class. Inherits from ABC abstract method
     """

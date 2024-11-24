@@ -88,3 +88,21 @@ Answer the following questions:
 
 ![Unit tests](images/unit-tests.png)
 
+### Unit Test Evidencing - Test Display Class
+![Unit tests](images/unit-tests-display-1.png)
+![Unit tests](images/unit-tests-display-2.png)
+![Unit tests](images/unit-tests-display-3.png)
+
+> AssertionError: "Welcome to the car park" != "Goodbye"
+> The test update assets the message equals goodbye but the attribute retains the value 
+> "Welcome to the car park". This issue is occurring because our method for update in 
+> Display class does not modify the message attribute correctly.
+> Our old method simply just printed the key, value pair in our data dictionary without 
+> updating the message attributes. 
+> The method needs to be modified to handle the message attribute properly:
+> Making sure the method checks for specific keys in the data dictionary, e.g. "message" and 
+> "is_on". 
+> If the key matches an attribute of the Display class, it updates the attributes with 
+> corresponding values. 
+
+
