@@ -106,3 +106,16 @@ Answer the following questions:
 > corresponding values. 
 
 
+### Test the car park register method
+
+> The car park register method should accept a `Sensor` or `Display` object. It should raise 
+> a `TypeError` if the object is neither a `Sensor` nor a `Display`. Before proceeding, think about where you would test this behaviour. Should you test it in the `CarPark` unit tests or the `Sensor` unit tests? Why?
+
+> The register method is a part of the CarPark class so its behaviour is related to how the 
+> CarPark interacts with Sensor and Display objects. So it should be tested in the CarPark 
+> unit tests not the Sensor unit test. This will help us ensure that the functionality of 
+> CarPark class is working as expected.
+
+
+
+
