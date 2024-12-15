@@ -1,36 +1,49 @@
 # kw_ipriot_car_park_prj
 
-# Car Project 🚗
+# Car Park Management System 🚗
 
 ## Brief Overview
-This project is a simplified car park system made using Object-Oriented Programming concepts. 
+The Car Park Management System or project is a simplified car park system made using 
+Object-Oriented Programming concepts. 
 This system consists of a car park, sensors and a display to track cars entering to occupy 
 the parking bays and exiting the parking bays.
 
 
-## Features
-- Car Park: Will contain the nuber of parking bays and their availability.
+## Key Features
+- Car Park: Tracks the total capacity of parking bays and updates available bays
 - Sensors : Use sensor objects to detect a cars movement as it enters and leaves the bay 
-- Displays: Will display the number of available parking bays relying on the sensor.
+- Displays: Outputs and displays the number of available parking bays relying on the sensor
+
 
 
 ## Installation of Project 
+### Prerequisites
+* Python 3.8 or later
+* Git 
+
+### Steps to Install
 To get started with the project, you can follow these steps:
 
-1. Clone the repository:
-   ```bash
+1. Clone the repository - 
+    Use the following command to clone the project to your local machine: 
+    ```bash
    git clone https://github.com/w3ngm0/ipriot_car_park_prj.git
+
+### Run the Application 
+To run the application execute the main script to start the simulation: 
+    
+    main.py 
 
 
 ### Images and Additional Evidencing
 ![Initial commit](images/gh_image.png)
 
 
-| Class Name   | Attributes                             | Methods                              |
-|--------------|----------------------------------------|--------------------------------------|
-| `CarPark`    | capacity, available_bays, plates_id    | add_car, remove_car , is_full        |
-| `Sensor`     | sensor_id, sensor_position(entry/exit) | detect_car, reset_sensor             |
-| `Display`    | message , location (entry or exit)     | show_display, update_display_message |
+| Class Name   | Attributes                                                 | Methods                                                                                                                       |
+|--------------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `CarPark`    | location, capacity, plates, sensors, log_file, config_file | register(), add_car(), remove_car() , update_displays(), available_bays(), _log_car_activity(), write_config(), from_config() |
+| `Sensor`     | id, is_active, car_park                                    | update_car_park(), _scan_plate(), detect_vehicle()                                                                            |
+| `Display`    | id, car_park, message, is_on                               | update()                                                                                                                      |
 
 ### Updated src file with classes
 ![Added stubs for classes](images/stubs-for-classes.png)
@@ -125,5 +138,14 @@ Answer the following questions:
 > In my src/main.py running main.py gives me: 
 > 
 ![Main.py output](images/main-py.png)
+
+## Release Version 
+![Release Notes](images/publish-release.png)
+
+# Conclusion 
+This project demonstrates a Car Park Management system using Python, with Key components. 
+
+## License 
+This project is licensed under the MIT license
 
 
