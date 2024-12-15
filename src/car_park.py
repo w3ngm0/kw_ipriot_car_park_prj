@@ -9,16 +9,8 @@ class CarPark:
     """CarPark class"""
 
     def __init__(self, location="Unknown", capacity=0, plates=None, sensors=None,
-                 displays=None, log_file=Path("log.txt"), config_file=None):
+                 displays=None, log_file=Path("log.txt"), config_file=Path("config.txt")):
         """ Initialize CarPark object"""
-        if config_file:
-            # Load configuration from file
-            config_file = Path(config_file)
-            with config_file.open() as f:
-                config = json.load(f)
-            location = config.get("location", location)
-            capacity = config.get("capacity", capacity)
-            log_file = config.get("log_file", log_file)
 
         # Assign attributes
         self.location = location
@@ -27,10 +19,11 @@ class CarPark:
         self.sensors = sensors or []
         self.displays = displays or []
         self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
-        self.config_file = config_file if config_file else Path("config.json")
+        self.config_file = config_file if isinstance(config_file, Path) else Path(config_file)
 
         # create file if it doesn't exist:
         self.log_file.touch(exist_ok=True)
+        self.config_file.touch(exist_ok=True)
 
     def __str__(self):
         ...  # Return a string containing the car park's location and capacity
