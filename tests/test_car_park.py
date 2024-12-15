@@ -156,6 +156,22 @@ class TestCarPark(unittest.TestCase):
         # Clean up
         config_file.unlink(missing_ok=True)
 
+    def test_available_bays(self):
+        """Test CarPark and its available bays"""
+        # Initial full available bays
+        self.assertEqual(self.car_park.available_bays, 100)
+
+        # Add a car to check available bays
+        self.car_park.add_car("FAKE-001")
+        self.assertEqual(self.car_park.available_bays, 99)
+        # Add another
+        self.car_park.add_car("FAKE-002")
+        self.assertEqual(self.car_park.available_bays, 98)
+
+        # Now remove a car
+        self.car_park.remove_car("FAKE-001")
+        self.assertEqual(self.car_park.available_bays, 99)
+
 
 if __name__ == "__main__":
     unittest.main()
