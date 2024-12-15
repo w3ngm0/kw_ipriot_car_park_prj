@@ -26,7 +26,8 @@ class CarPark:
         self.config_file.touch(exist_ok=True)
 
     def __str__(self):
-        ...  # Return a string containing the car park's location and capacity
+        """Return a string representation of the CarPark."""
+        return f"Car Park at {self.location}, with {self.capacity} bays"
 
     def register(self, component):
         """
@@ -63,7 +64,7 @@ class CarPark:
 
     def add_car(self, plate):
         self.plates.append(plate)
-        self._log_car_activity(plate, "entered") # logging this car entry
+        self._log_car_activity(plate, "entered")  # logging this car entry
         self.update_displays()
 
     def remove_car(self, plate):
